@@ -4,5 +4,4 @@
 cd ./react-project
 # npx commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS
 # https://github.com/conventional-changelog/commitlint#add-hook
-echo "${1}"
 npx commitlint --config .commitlintrc.js --edit "${1}"

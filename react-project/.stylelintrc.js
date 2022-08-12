@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-rational-order'],
+  extends: ['stylelint-config-standard', 'stylelint-config-rational-order', 'stylelint-config-standard-scss'],
   plugins: ['stylelint-order', 'stylelint-declaration-block-no-ignored-properties'],
   rules: {
     'comment-empty-line-before': null,
@@ -9,5 +9,5 @@ module.exports = {
     'no-invalid-double-slash-comments': null,
     'rule-empty-line-before': 'always',
   },
-  ignoreFiles: ['node_modules/**/*', 'build/**/*'],
+  ignoreFiles: ['node_modules/**/*', 'build/**/*', 'src/assets/font/**'],
 }

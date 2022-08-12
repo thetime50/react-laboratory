@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module, @typescript-eslint/no-var-requires */
 const OFF = 0; // eslint-disable-line no-unused-vars
 const WARN = 1; // eslint-disable-line no-unused-vars
 const ERROR = 2;
@@ -47,5 +48,6 @@ module.exports = {
         js: 'never',
       },
     ],
+    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
   },
 };

@@ -12,3 +12,19 @@ lint-staged 使用.cjs文件配置
 
  "commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS" -E??
 
+
+
+```
+Do not use "require".eslintunicorn/prefer-module
+Require statement not part of import statement.eslint@typescript-eslint/no-var-requires
+```
+(Prefer JavaScript modules (ESM) over CommonJS)[https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md]  
+(Disable unicorn/prefer-module in certain files)[https://github.com/xojs/xo/issues/540]  
+(Meta: Make npm run test run on Windows)[https://github.com/refined-github/refined-github/pull/4729]
+
+
+<!-- https://www.jianshu.com/p/e687aa625f71 -->
+
+- 替换dart-css
+- 资源加载使用 asset
+
