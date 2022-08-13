@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Suspense, useState } from 'react';
 import reactIconImg from 'Assets/images/react-icon.svg';
+
+const CompOne = React.lazy(() => import('Components/CompOne'));
+const CompTwo = React.lazy(() => import('Components/CompTwo'));
 
 console.log('reactIconImg :>>', reactIconImg);
 
@@ -12,12 +15,20 @@ interface IPprops {
 function App(props: IPprops) {
   // 为了让模板代码简介 强制使用结构赋值
   // https://stackoverflow.com/questions/55273742/why-do-i-get-must-use-destructuring-state-assignment
-  const { name, age } = props;
+  const { name, age/* , test */ } = props;
+  const [showTwo, setShowTwo] = useState<boolean>(false);
   return (
     <>
       <div className="App">Hello World</div>
       <i className="iconfont iconf-aixin" />
       <span>{`Hello! I'm ${name}, ${age} years old.`}</span>
+      <Suspense fallback={<div>Loading...</div>}>
+        <CompOne a={1} b={2} />
+        {showTwo && <CompTwo a={3} b={4} />}
+        <button type="button" onClick={() => setShowTwo(true)}>
+          显示Two
+        </button>
+      </Suspense>
       <div className="img">
         <img src={reactIconImg} alt="" />
         {/* <img src="./assets/images/react-icon.svg" alt="" /> */}

@@ -68,6 +68,8 @@ module.exports = {
       {
         allowList: {
           props: true,
+          args: true,
+          temp: true,
         },
       },
     ],

@@ -1,8 +1,8 @@
 # react-project
 
 [\[2.7w字\]我是这样搭建 React+Typescript项目环境的(上)](https://juejin.cn/post/6860129883398668296)  
-[\[2.7w字\]我是这样搭建 React+Typescript项目环境的(下)](https://juejin.cn/post/6860134655568871437)
-
+[\[2.7w字\]我是这样搭建 React+Typescript项目环境的(下)](https://juejin.cn/post/6860134655568871437)  
+[github 项目](https://github.com/vortesnail/react-ts-quick-starter)
 
 [husky](https://typicode.github.io/husky/#/)
 [为什么哈士奇放弃了传统的 JS 配置](https://blog.typicode.com/husky-git-hooks-javascript-config/)
