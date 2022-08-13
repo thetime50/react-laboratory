@@ -1,4 +1,6 @@
 /* eslint-disable unicorn/prefer-module, @typescript-eslint/no-var-requires */
+const path = require('node:path');
+
 const OFF = 0; // eslint-disable-line no-unused-vars
 const WARN = 1; // eslint-disable-line no-unused-vars
 const ERROR = 2;
@@ -29,8 +31,9 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.tsx', '.ts', '.js', '.json'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
       },
+      typescript: {},
     },
   },
   plugins: [
@@ -49,5 +52,24 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+    'react/jsx-filename-extension': [
+      2,
+      {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+        ],
+      },
+    ],
+    'unicorn/prevent-abbreviations': [
+      'error',
+      {
+        allowList: {
+          props: true,
+        },
+      },
+    ],
   },
 };

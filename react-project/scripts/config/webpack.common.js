@@ -39,12 +39,21 @@ const getCssLoaders = (importLoaders) => [
 
 module.exports = {
   entry: {
-    app: resolve(PROJECT_PATH, './src/app.js'),
+    app: resolve(PROJECT_PATH, './src/index.tsx'),
   },
   output: {
     filename: `js/[name]${isDev ? '' : '.[hash:8]'}.js`,
     path: resolve(PROJECT_PATH, './dist'),
     assetModuleFilename: 'assets/[hash][ext][query]',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    alias: {
+      Src: resolve(PROJECT_PATH, './src'),
+      Components: resolve(PROJECT_PATH, './src/components'),
+      Utils: resolve(PROJECT_PATH, './src/utils'),
+      Assets: resolve(PROJECT_PATH, './src/assets'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -70,6 +79,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(tsx?|jsx?)$/,
+        loader: 'babel-loader',
+        options: { cacheDirectory: true }, // 缓存文件
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/,
         use: getCssLoaders(1),
       },
@@ -86,7 +101,7 @@ module.exports = {
         ],
       },
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
         type: 'asset',
         generator: {
           filename: 'assets/images/[name].[contenthash:8].[ext]',

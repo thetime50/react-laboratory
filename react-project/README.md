@@ -28,3 +28,9 @@ Require statement not part of import statement.eslint@typescript-eslint/no-var-r
 - 替换dart-css
 - 资源加载使用 asset
 
+- 允许eslint unicorn props缩写
+
+- Src 等项目路径匹配
+    - tsconfig.json 文件配置要
+    - .eslintrc.js eslint-import-resolver-typescript 插件匹配 (只要一行typescript)
+    - webpack.common.js 文件匹配
