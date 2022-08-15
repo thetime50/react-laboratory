@@ -56,6 +56,10 @@ create-react-app 包含
 **格式化配置**  
 使用 husky lint-staged prettier 在提交前执行prettier 格式检查
 
+默认配置在package.json 的eslintConfig 中
+
+建议使用prettier 格式化
+
 #### 独立的组件开发
 
 使用 (Storybook for React)[https://github.com/storybookjs/storybook] 或(React Styleguidist)[https://react-styleguidist.js.org/]
