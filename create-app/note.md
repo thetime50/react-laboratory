@@ -211,6 +211,30 @@ js中使用process.env.PUBLIC_URL
 
 ### 构建应用程序
 #### 安装依赖
+```cmd
+npm install --save react-router-dom
+```
+#### 导入组件
+
+支持但是不建议使用ES5的require() module.exports,推荐使用 import export
+
+引入组件文件 ...
+
+绝对路径定义
+jsconfig.json/tsconfig.json
+```js
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
+```
+```js
+import Button from 'components/Button';
+```
+
+
 
 
 
@@ -235,3 +259,17 @@ npm test 手动运行，保存文件/npm start 时自动运行
 
 // todo...
 
+
+
+
+## todo
+- [ ] react hook
+- [ ] router
+- [ ] eslint stylelint
+  - 引入后是如何起作用的
+- [ ] (commitelint lint-staged husky) cra 是不是已经配置过了???
+- [ ] 状态管理各种方案
+  1. ...
+- [ ] ui库
+- [ ] chart 菜单页面 权限
+- [ ] 表单和列表页面
