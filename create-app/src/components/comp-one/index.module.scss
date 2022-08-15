@@ -1,0 +1,22 @@
+.comp-one{
+    color: #98e9ff;
+}
+
+
+.block{
+    .row1{color: #faa;}
+    .row2{color: #afa;}
+    .row2.active{color: #8f8;}
+}
+
+
+.block1{
+    .row1{color: #aaf;} //
+    .row3:hover{color: #8ff;}
+    #chart{border: 1px solid #999;}
+}
+
+// 中js 中通过最里层的类名调用 
+// .row2.active 会转换为用下划线连接
+// id和类名的导出是一样的
+// module 逻辑会把类名/id字符串转换为一个索引映射，中间必须通过导出的映射进行引用
