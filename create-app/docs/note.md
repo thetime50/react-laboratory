@@ -265,15 +265,3 @@ npm test 手动运行，保存文件/npm start 时自动运行
 
 
 
-
-## todo
-- [ ] react hook
-- [ ] router
-- [ ] eslint stylelint
-  - 引入后是如何起作用的
-- [ ] (commitelint lint-staged husky) cra 是不是已经配置过了???
-- [ ] 状态管理各种方案
-  1. ...
-- [ ] ui库
-- [ ] chart 菜单页面 权限
-- [ ] 表单和列表页面
