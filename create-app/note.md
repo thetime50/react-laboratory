@@ -41,6 +41,178 @@ IE 9-11需要polyfill [react-app-polyfill](https://github.com/facebook/create-re
 编辑package.json文件可能不会被babel-loader识别到触发刷新，可以尝试删除node\_modules/.cache文件夹重试
 
 
+#### 更新版本
+create-react-app 包含
+- create-react-app 用于产生项目命令和应用程序
+- react-script 用于生成项目依赖
+
+要更新项目只要更新package.json里面react-script的版本重新npm install就行了
+
+### 开发
+#### 编辑器配置
+
+**浏览器联调配置**
+
+**格式化配置**  
+使用 husky lint-staged prettier 在提交前执行prettier 格式检查
+
+#### 独立的组件开发
+
+使用 (Storybook for React)[https://github.com/storybookjs/storybook] 或(React Styleguidist)[https://react-styleguidist.js.org/]
+生成组件demo文档
+
+#### 分析bundle 大小
+使用[source-map-explorer](https://github.com/danvk/source-map-explorer)查看打包后bundle 大小
+
+#### https 开发
+
+...
+
+### 样式和资源
+#### 添加样式
+项目中可以在js里import .css文件
+
+#### cssmodule
+使用 [name].module.css 命名样式文件引入后会为每个类生成唯一类名
+
+button.module.css
+```css
+.error {
+  background-color: red;
+}
+```
+
+Button.js
+```js
+import React, { Component } from 'react';
+import styles from './Button.module.css'; // Import css modules stylesheet as styles
+import './another-stylesheet.css'; // Import regular stylesheet
+
+class Button extends Component {
+  render() {
+    // reference as a js object
+    return <button className={styles.error}>Error Button</button>;
+  }
+}
+```
+
+优点 可以支持.module.css 文件重用  
+缺点 引入后需要通过一个对象引用  
+问题 复杂的样式怎么引用 使用 composes: className; 命名
+
+[css-modules](https://github.com/css-modules/css-modules)
+
+其他定义
+```css
+/* 使用类目做属性 */
+.className {
+  color: green;
+  background: red;
+}
+/* 使用composes定义 */
+.otherClassName {
+  composes: className;
+  color: yellow;
+}
+/* 定义到指定模块 */
+.otherClassName {
+  composes: className from "./style.css";
+}
+/* 定义到全局 */
+.otherClassName {
+  composes: globalClassName from global;
+}
+:global {
+  .global-class-name {
+    color: green;
+  }
+}
+```
+
+#### 添加SASS
+npm install sass 就行了
+
+在scss 中引入变量
+```scss
+@use 'styles/_colors.scss'; // assuming a styles directory under src/
+@use '~nprogress/nprogress'; // 引入 node_modules/nprogress 下的文件
+```
+
+在项目中添加[.env](https://github.com/facebook/create-react-app/blob/main/docusaurus/docs/adding-custom-environment-variables.md#adding-development-environment-variables-in-env)文件添加默认导入路径
+
+```
+SASS_PATH=path1;path2;path3
+```
+
+**使用Flow**  
+需要覆盖 module.file_ext 配置 包含.sass或.scss和默认的.js.jsx.mjs.json
+
+#### 添加 css reset
+
+在css样式中设置一次 @import-normalize;
+
+会配合browserslist 的设置
+
+#### 后处理
+压缩 添加前缀
+
+通过browserslist 配置
+
+CSS Grid Layout前缀默认是禁用的  
+可以使用/* autoprefixer grid: autoplace */开启grid的前缀
+
+#### 添加图像、字体和文件
+
+在js和css 中可以引入图像、字体和文件等  
+图片文件除svg外可以转为base64  
+svg文件可以作为图片文件引入也可以作为react 组件引入
+
+**对于svg**  
+```js
+// import logo from './logo.svg'; // 引入为文件
+import { ReactComponent as Logo } from './logo.svg'; // 引入为组件
+
+function App() {
+  return (
+    <div>
+      {/* Logo is an actual React component */}
+      <Logo />
+    </div>
+  );
+}
+```
+```css
+.Logo {
+  background-image: url(./logo.png);
+}
+```
+
+#### .graphql 文件
+
+通过graphql.macro创建加载 .gql和.graphql文件
+
+#### public文件资源
+
+一些资源可以放在public文件夹里,但是更建议在js中使用importy引入
+- 脚本样式压缩,合并
+- 缺少文件会在打包时报出错误
+- 哈希解决缓存问题
+在代码中使用 PUBLIC_URL引用
+```html
+<!-- index.html -->
+<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+```
+
+js中使用process.env.PUBLIC_URL
+
+#### 代码拆分
+使用import()语法拆分打包代码,返回一个Promise对象
+
+
+### 构建应用程序
+#### 安装依赖
+
+
 
 <div id="test"></div>
 ### 测试
