@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import CompOne from 'components/comp-one';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import CompOne from "components/comp-one";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         >
           Learn React
         </a>
-        <CompOne ></CompOne>
+        <CompOne></CompOne>
       </header>
     </div>
   );
