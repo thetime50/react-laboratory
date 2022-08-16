@@ -133,6 +133,12 @@ class Button extends Component {
 }
 ```
 
+- 一个类似vue css scoped 的解决方案[ow to add scoped css in react?](https://stackoverflow.com/questions/50849070/how-to-add-scoped-css-in-react)  
+  [react-scoped-css](https://github.com/gaoxiaoliangz/react-scoped-css)  
+  引入 *.scoped.css 的文件会给文件内的类名和引入的组件上增加hash
+- 对象/数组转类名库 [classnames](https://github.com/JedWatson/classnames)
+
+
 #### 添加SASS
 npm install sass 就行了
 
@@ -238,8 +244,55 @@ jsconfig.json/tsconfig.json
 import Button from 'components/Button';
 ```
 
+#### 全局变量
+通过windows引用 或者 //eslint-disable-line
+
+#### 添加Bootstrap
+[React Bootstrap](https://react-bootstrap.netlify.app/)  
+[reactstrap 牺牲某些功能为代价寻求较小构建的项目](https://reactstrap.github.io/?path=/story/home-installation--page)
+
+npm install bootstrap
+
+替换默认样式定义
+```scss
+// Override default variables before the import
+$body-bg: #000; // 覆盖默认样式定义
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+```
+
+#### 使用Flow 
+类型检查工具
+
+#### 使用typescript
+初始化一个ts 项目
+```cmd
+npx create-react-app my-app --template typescript
+```
+
+或者添加TS到已有项目
+```cmd
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+```
 
 
+[react ts 备忘录](https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets) // todo  
+
+不支持常量枚举和命名空间
+
+https://stackoverflow.com/questions/40227401/[const-enum-in-typescript](https://stackoverflow.com/questions/40227401/const-enum-in-typescript)声明枚举前不能加const  
+常量枚举 const enum 每TS编译后是一个映射数组，一般枚举编译后是个对象，可以使用枚举值到枚举名的映射
+
+#### 使用 relay
+[relay](https://relay.dev/)支持GraphQL 的数据驱动react 应用程序
+
+#### 使用router
+
+<s>[react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)</s>
+[react-router-dom v6](https://reactrouter.com/docs/en/v6)
+
+[./react-router-dom.md](./react-router-dom.md)
 
 
 <div id="test"></div>
