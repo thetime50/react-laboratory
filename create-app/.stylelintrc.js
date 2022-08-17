@@ -15,7 +15,12 @@ module.exports = {
     'function-name-case': 'lower',
     'no-descending-specificity': null,
     'no-invalid-double-slash-comments': null,
-    'rule-empty-line-before': 'always',
+    'rule-empty-line-before': [ // 空行
+      'error',
+      {
+        ignore: ['after-comment', 'first-nested', 'inside-block'],
+      },
+    ],
   },
   ignoreFiles: ['node_modules/**/*', 'build/**/*', 'src/assets/font/**'],
 }
