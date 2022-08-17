@@ -24,11 +24,6 @@ const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
 );
 
-
-
-
-
-
 root.render(
   // http://react.caibaojian.com.cn/docs/strict-mode.html
   <React.StrictMode>
