@@ -30,7 +30,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "test": "craco test",
     "eject": "craco eject",
-    "prepare": "cd .. && husky install creact-app/.husky",
+    "prepare": "cd .. && husky install create-app/.husky",
     "prettier": "npx prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "npm run lint-eslint && npm run lint-stylelint",
     "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js,.jsx,.json src",
