@@ -21,8 +21,14 @@ import Page1 from "pages/page1";
 import Page2 from "pages/page2";
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.querySelector("#root") as HTMLElement
 );
+
+
+
+
+
+
 root.render(
   // http://react.caibaojian.com.cn/docs/strict-mode.html
   <React.StrictMode>

@@ -16,7 +16,7 @@ module.exports = {
     'no-descending-specificity': null,
     'no-invalid-double-slash-comments': null,
     'rule-empty-line-before': [ // 空行
-      'error',
+      "always",
       {
         ignore: ['after-comment', 'first-nested', 'inside-block'],
       },

@@ -6,12 +6,12 @@ module.exports = {
     "plugin:unicorn/recommended",
     "plugin:promise/recommended",
    	'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
-    'prettier/unicorn',
+    // 'prettier/@typescript-eslint',// 已经合并到prettier里了
+    // 'prettier/react',
+    // 'prettier/unicorn',
   ],
   rules: {
-    "additional-rule": "warn",
+    "unicorn/filename-case":0,
     'unicorn/prevent-abbreviations': [ // 命名缩写配置
       'error',
       {
@@ -19,16 +19,18 @@ module.exports = {
           props: true,
           args: true,
           temp: true,
+          // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/567
+          'react-app-env.d': true,
         },
       },
     ],
   },
   overrides: [
-    {
-      files: ["**/*.ts?(x)","**/*.js?(x)","**/*.json",],
-      rules: {
-        "additional-typescript-only-rule": "warn",
-      },
-    },
+    // {
+    //   files: ["**/*.ts?(x)","**/*.js?(x)","**/*.json",],
+    //   rules: {
+    //     "additional-typescript-only-rule": "warn",
+    //   },
+    // },
   ],
 };
