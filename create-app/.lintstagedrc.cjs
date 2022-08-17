@@ -1,12 +1,12 @@
 // lint-staged 配置文件
 module.exports = {
-  '*.{js,jsx,ts,tsx,json,}': [
-      // "eslint --config .eslintrc.js"
+  'src/**/*.{js,jsx,ts,tsx,json,}': [
+      "eslint --config .eslintrc.js"
   ],
-  '*.{css,scss,sass}': [
-      // "stylelint --config .stylelintrc.js"
+  'src/**/*.{css,scss,sass}': [
+      "stylelint --config .stylelintrc.js"
   ],
   "**.{html,md}": [
-    // "prettier --write"
+    "prettier --write"
   ],
 };
