@@ -16,8 +16,8 @@ module.exports = {
     'airbnb/hooks',
     // 'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:unicorn/recommended',
-    'plugin:promise/recommended',
+    'plugin:unicorn/recommended', // 命名规范
+    'plugin:promise/recommended', // promise 最佳实践
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -52,7 +52,7 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
-    'react/jsx-filename-extension': [
+    'react/jsx-filename-extension': [ // react jsx 文件名后缀
       2,
       {
         extensions: [
@@ -63,7 +63,7 @@ module.exports = {
         ],
       },
     ],
-    'unicorn/prevent-abbreviations': [
+    'unicorn/prevent-abbreviations': [ // 命名缩写配置
       'error',
       {
         allowList: {
