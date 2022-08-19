@@ -17,8 +17,10 @@ import {
   Navigate,
   NavLink,
 } from "react-router-dom";
+import Error404 from "./pages/err404";
 import Page1 from "pages/page1";
 import Page2 from "pages/page2";
+import Nested from "pages/nested";
 
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
@@ -27,9 +29,13 @@ const root = ReactDOM.createRoot(
 root.render(
   // http://react.caibaojian.com.cn/docs/strict-mode.html
   <React.StrictMode>
+    {/* 路径路由模式 */}
     <Router>
       <div className="flex-layout frow">
         <ul className="flex-none menu">
+          <li>
+            <Link to="/">/</Link>
+          </li>
           <li>
             <Link to="/page1">page1</Link>
           </li>
@@ -41,6 +47,9 @@ root.render(
           </li>
           <li>
             <NavLink to="/page2">page2</NavLink>
+          </li>
+          <li>
+            <Link to="/nested">nested</Link>
           </li>
         </ul>
 
@@ -63,6 +72,8 @@ root.render(
             {/* <Route path="/page2">
               <Page2 />
             </Route> */}
+            <Route path="/nested/*" element={<Nested />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
       </div>
