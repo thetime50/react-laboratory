@@ -21,6 +21,8 @@ import Error404 from "./pages/err404";
 import Page1 from "pages/page1";
 import Page2 from "pages/page2";
 import Nested from "pages/nested";
+import IndexPage from "pages/indexPage";
+import UseParams from "pages/useParams";
 
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
@@ -51,6 +53,12 @@ root.render(
           <li>
             <Link to="/nested">nested</Link>
           </li>
+          <li>
+            <Link to="/indexPage">index page</Link>
+          </li>
+          <li>
+            <Link to="/useParams/233">useParams</Link>
+          </li>
         </ul>
 
         {/* <hr /> */}
@@ -73,6 +81,8 @@ root.render(
               <Page2 />
             </Route> */}
             <Route path="/nested/*" element={<Nested />} />
+            <Route path="/indexPage/*" element={<IndexPage />} />
+            <Route path="/useParams/:id" element={<UseParams />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>

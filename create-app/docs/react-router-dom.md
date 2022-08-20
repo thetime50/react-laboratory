@@ -92,3 +92,87 @@ function App() {
   );
 }
 ```
+
+#### 索引路径
+
+可以使用 Route 组件的 index 属性来指定索引页面
+
+```jsx
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Activity />} />
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="activity" element={<Activity />} />
+      </Route>
+    </Routes>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      <GlobalNav />
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+```
+
+#### 相对链接
+
+Link 组件的 to 属性不以'/'开头的为相对路径
+
+可以根据参数的定义分段 不是以简单的 '/' 字符分段
+
+#### 未找到路径
+
+使用"\*" 捕获所有未匹配的剩余路径
+
+#### 多组路由
+
+一个路由组件或页面里允许出现多个 Routes 组件，但是不建议
+
+#### 后代组件
+
+可以在组件树深处使用 Routers 组件， 但是必须在外层的父组件匹配路径末尾添加\*号通配
+
+### 教程
+
+#### active link
+
+NavLink 提供 style className 回调参数
+
+#### 搜索参数
+
+```js
+let [searchParams, setSearchParams] = useSearchParams();
+// searchParams:
+//   ppend(name: string, value: string): void;
+//   get(name: string): string | null;
+//   getAll(name: string): string[];
+//   has(name: string): boolean;
+//   set(name: string, value: string): void;
+//   sort(): void;
+//   toString(): string;
+//   forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+```
+
+#### 自定义行为
+
+```js
+let location = useLocation();
+// { "pathname": "/useParams/34", "search": "", "hash": "", "state": null, "key": "smvkl141" }
+```
+
+```js
+let [params] = useSearchParams();
+params = new URLSearchParams(
+  Array.from(params).filter(
+    ([key, value]) => key !== "brand" || value !== brand
+  )
+);
+```
