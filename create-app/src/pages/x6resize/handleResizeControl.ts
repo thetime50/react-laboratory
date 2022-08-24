@@ -1,8 +1,10 @@
 import { Graph, Cell, Events } from "@antv/x6";
 import { GraphControlBase } from "./GraphControlManager";
 import * as lodash from "lodash";
-import { getLogger } from "@greatrpa/core/src/utils/console.logger";
-const logger = getLogger("native.message.call");
+// import { getLogger } from "@greatrpa/core/src/utils/console.logger";
+// const logger = getLogger("native.message.call");
+
+const logger = console.log;
 
 const STROKE_DIR_T = 0b0001;
 const STROKE_DIR_R = 0b0010;
@@ -72,8 +74,8 @@ interface HandleResizeControlOptionsParameter {
     | [number, number, number, number]; // 上右下左
 }
 interface HandleResizeControlOptions {
-  embedPadding?: [number, number, number, number]; // 上右下左
-  handlePadding?: [number, number, number, number]; // 上右下左
+  embedPadding: [number, number, number, number]; // 上右下左
+  handlePadding: [number, number, number, number]; // 上右下左
 }
 
 function getDefaultOptions(): HandleResizeControlOptions {
@@ -154,7 +156,7 @@ export default class HandleResizeControl extends GraphControlBase {
       lodash.assign(t, lodash.cloneDeep(v));
       return t;
     }, {});
-    return res;
+    return res as HandleResizeControlOptions;
   }
 
   nodeEmbed(ge: Events.EventArgs["node:embed"]) {

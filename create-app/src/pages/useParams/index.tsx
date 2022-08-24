@@ -28,11 +28,11 @@ export default function useParametersPage() {
   const parameters = useParams();
   const [searchParameters, setSearchParameters] = useSearchParams();
   const searchParameter = {} as any;
-  // eslint-disable-next-line unicorn/no-array-for-each
+  // -eslint-disable-next-line unicorn/no-array-for-each
   searchParameters.forEach((value: string, key: string) => {
     searchParameter[key] = value;
   });
-  // eslint-disable-next-line unicorn/prefer-spread
+  // -eslint-disable-next-line unicorn/prefer-spread
   console.log("searchParameters", searchParameters);
   const location_ = useLocation();
   return (

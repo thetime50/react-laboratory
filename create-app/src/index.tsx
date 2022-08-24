@@ -87,7 +87,7 @@ root.render(
             <Route path="/nested/*" element={<Nested />} />
             <Route path="/indexPage/*" element={<IndexPage />} />
             <Route path="/useParams/:id" element={<UseParams />} />
-            <Route path="/x6demo" element={<X6resize />} />
+            <Route path="/x6resize" element={<X6resize />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>

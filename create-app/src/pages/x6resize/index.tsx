@@ -414,7 +414,7 @@ export default function Page2Page(props: {}) {
     })();
   }, [x6Reference]);
   return (
-    <div className="page2-page flex-layout">
+    <div className="x6resize-page flex-layout">
       <h1 className="flex-none">Page 2</h1>
       <div className="x6 flex-auto" ref={x6Reference} />
     </div>
