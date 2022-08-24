@@ -23,6 +23,7 @@ import Page2 from "pages/page2";
 import Nested from "pages/nested";
 import IndexPage from "pages/indexPage";
 import UseParams from "pages/useParams";
+import X6resize from "pages/x6resize";
 
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
@@ -59,6 +60,9 @@ root.render(
           <li>
             <Link to="/useParams/233">useParams</Link>
           </li>
+          <li>
+            <Link to="/x6resize">x6resize</Link>
+          </li>
         </ul>
 
         {/* <hr /> */}
@@ -83,6 +87,7 @@ root.render(
             <Route path="/nested/*" element={<Nested />} />
             <Route path="/indexPage/*" element={<IndexPage />} />
             <Route path="/useParams/:id" element={<UseParams />} />
+            <Route path="/x6demo" element={<X6resize />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
