@@ -34,3 +34,25 @@ Require statement not part of import statement.eslint@typescript-eslint/no-var-r
     - tsconfig.json 文件配置要
     - .eslintrc.js eslint-import-resolver-typescript 插件匹配 (只要一行typescript)
     - webpack.common.js 文件匹配
+
+
+## 功能点整理
+
+- .npmrc 文件配置项目npm源
+- <s>EditorConfig 编码风格</s>
+- Prettier  
+    npm install prettier -D  
+    .prettierrc  
+- eslint  
+    npm install eslint -D  
+    npx eslint --init  
+    extends: \['airbnb/hooks','plugin:@typescript-eslint/recommended'\]  
+    npm install eslint-plugin-promise eslint-plugin-unicorn -D  
+    extends: \[ ..., 'plugin:unicorn/recommended', 'plugin:promise/recommended',\]  
+    npm install typescript -D  
+    extends: \[ ..., 'plugin:unicorn/recommended', 'plugin:promise/recommended',\]  
+    plugins: ['react', 'unicorn', 'promise', '@typescript-eslint'],  
+- StyleLint
+
+
+
