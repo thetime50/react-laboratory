@@ -24,6 +24,7 @@ import Nested from "pages/nested";
 import IndexPage from "pages/indexPage";
 import UseParams from "pages/useParams";
 import X6resize from "pages/x6resize";
+import ImmerPage from "pages/immer";
 
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
@@ -63,6 +64,9 @@ root.render(
           <li>
             <Link to="/x6resize">x6resize</Link>
           </li>
+          <li>
+            <Link to="/immer">immer</Link>
+          </li>
         </ul>
 
         {/* <hr /> */}
@@ -88,6 +92,7 @@ root.render(
             <Route path="/indexPage/*" element={<IndexPage />} />
             <Route path="/useParams/:id" element={<UseParams />} />
             <Route path="/x6resize" element={<X6resize />} />
+            <Route path="/immer" element={<ImmerPage />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>

@@ -2,7 +2,7 @@ import {
   testCreateGraphControlManager,
   testGraphControlManagerExec,
 } from "./GraphControlManager";
-import HandleResizeControl from "./HandleResizeControl";
+import HandleResizeControl from "./handleResizeControl";
 import { Graph, Model, Node, Cell } from "@antv/x6";
 
 export function renderControlManager(dom: HTMLDivElement) {
