@@ -106,11 +106,11 @@ module.exports = {
         configFile: resolve(PROJECT_PATH, './tsconfig.json'),
       },
     }),
-    !isDev && new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-      ignoreOrder: false,
-    }),
+    // !isDev && new MiniCssExtractPlugin({
+    //   filename: 'css/[name].[contenthash:8].css',
+    //   chunkFilename: 'css/[name].[contenthash:8].css',
+    //   ignoreOrder: false,
+    // }),
   ],
   // externals: { // 从cdn引入
   //   react: 'React',
