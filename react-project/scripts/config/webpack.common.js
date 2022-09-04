@@ -18,7 +18,11 @@ const getCssLoaders = (importLoaders) => [
   {
     loader: 'css-loader',
     options: {
-      modules: false,
+      // modules: false,
+      modules: {
+        localIdentName: '[hash:base64]', // default
+        auto: true, // default
+      },
       sourceMap: isDev,
       importLoaders,
     },
