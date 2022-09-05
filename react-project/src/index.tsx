@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './app';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/font/iconfont/iconfont.css';
+import './assets/styles/public.scss';
 
 if (module && module.hot) { // dev 局部更新 配合 webpack.HotModuleReplacementPlugin
   module.hot.accept();

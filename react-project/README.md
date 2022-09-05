@@ -36,6 +36,9 @@ Require statement not part of import statement.eslint@typescript-eslint/no-var-r
     - webpack.common.js 文件匹配
 
 
+- [sideEffects导致的全局样式消失](https://blog.csdn.net/o__o__o__o/article/details/117606495)  
+  "sideEffects": \["*.css","*.scss"\],
+
 ## 功能点整理
 
 - .npmrc npm下载源配置

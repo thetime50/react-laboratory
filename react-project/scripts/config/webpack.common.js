@@ -18,7 +18,11 @@ const getCssLoaders = (importLoaders) => [
   {
     loader: 'css-loader',
     options: {
-      modules: false,
+      // modules: false,
+      modules: {
+        localIdentName: '[hash:base64]', // default
+        auto: true, // default
+      },
       sourceMap: isDev,
       importLoaders,
     },
@@ -106,11 +110,11 @@ module.exports = {
         configFile: resolve(PROJECT_PATH, './tsconfig.json'),
       },
     }),
-    !isDev && new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-      ignoreOrder: false,
-    }),
+    // !isDev && new MiniCssExtractPlugin({
+    //   filename: 'css/[name].[contenthash:8].css',
+    //   chunkFilename: 'css/[name].[contenthash:8].css',
+    //   ignoreOrder: false,
+    // }),
   ],
   // externals: { // 从cdn引入
   //   react: 'React',
