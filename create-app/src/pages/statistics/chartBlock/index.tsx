@@ -60,9 +60,9 @@ export const ChartBlock: FC<ChartBlockProp> = function (props) {
     // );
     // XAXisComponentOption
     // (chartOpt.xAxis as any).data = time;
-    series[0].data = success;
-    series[1].data = failed;
-    series[2].data = total;
+    // series[0].data = success;
+    // series[1].data = failed;
+    // series[2].data = total;
     // series[0].data = res.success;
     // series[1].data = res.failed;
     // series[2].data = res.total;
@@ -73,7 +73,7 @@ export const ChartBlock: FC<ChartBlockProp> = function (props) {
     if (echartRef.current) {
       // console.log(chartOpt.series[0].data.length);
       chartInited = true;
-      echartRef.current.setOption(chartOpt as any);
+      // echartRef.current.setOption(chartOpt as any);
     }
   }
   function onEchargInit() {
@@ -85,7 +85,7 @@ export const ChartBlock: FC<ChartBlockProp> = function (props) {
   return (
     <div className={""}>
       <h3>{title}</h3>
-      <div className={style.chartWp}>
+      <div className={style["chart-wp"]}>
         <EchartsComp ref={echartRef} onInit={onEchargInit}></EchartsComp>
       </div>
     </div>

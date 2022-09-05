@@ -23,25 +23,27 @@ interface EchargsProps {
 const EchartsComp = forwardRef<EchargsRef, EchargsProps>((props, ref) => {
   const chartEl = useRef(null);
   const { onInit } = props;
-  let echartsIts: echarts.EChartsType | null = null;
+  let echartsIts = useRef<null | echarts.ECharts>(null);
   useEffect(() => {
     if (chartEl.current) {
-      echartsIts = echarts.init(chartEl.current);
+      echartsIts.current = echarts.init(chartEl.current);
       onInit && onInit();
     }
     return () => {
-      echartsIts && echartsIts.dispose();
+      echartsIts.current && echartsIts.current.dispose();
     };
   }, [chartEl]);
 
   useImperativeHandle(ref, () => {
     const setOption: echarts.EChartsType["setOption"] = (...args) => {
-      return echartsIts && echartsIts.setOption(...(args as [any]));
+      return (
+        echartsIts.current && echartsIts.current.setOption(...(args as [any]))
+      );
     };
     return {
       setOption,
     };
   });
-  return <div className={style.echartsComp} ref={chartEl}></div>;
+  return <div className={style["echarts-comp"]} ref={chartEl}></div>;
 });
 export default EchartsComp;
