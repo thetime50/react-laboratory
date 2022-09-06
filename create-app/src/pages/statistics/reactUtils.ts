@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 export function useLivecycle(hook: {
   componentDidMount?: () => void;
@@ -6,18 +6,17 @@ export function useLivecycle(hook: {
   componentWillUnmount?: () => void;
 }) {
   const { componentDidMount, componentDidUpdate, componentWillUnmount } = hook;
-  let start = 0;
-  // if (componentDidMount || componentDidUpdate || componentWillUnmount) {
+
+  const start = useRef(0);
   useEffect(() => {
-    if (!start) {
+    if (!start.current) {
       componentDidMount && componentDidMount();
     } else {
       componentDidUpdate && componentDidUpdate();
     }
-    start++;
+    start.current++;
     return () => {
       componentWillUnmount && componentWillUnmount();
     };
   }, []);
-  // }
 }

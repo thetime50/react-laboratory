@@ -5,7 +5,7 @@ import { RangeValue } from "rc-picker/lib/interface";
 import style from "./style.module.scss";
 import { ChartBlock } from "./chartBlock";
 
-// import { playerLogDuccessTotal } from "@/api/playerLog";
+// import { playerLogDuccessTotal } from "./playerLog";
 import { DataItem } from "./playerLogType";
 import { useLivecycle } from "./reactUtils";
 
@@ -28,6 +28,7 @@ export default function AtatisticsPage() {
     Moment(),
   ] as RangeValue<Moment.Moment>);
   const [data, setData] = useState<Array<DataItem>>([]);
+  const [interval, setInterval] = useState<number>(1);
   const blocks: Array<{
     title: string;
     keyStr: "1" | "2" | "3" | "4" | "5" | "6";
@@ -65,17 +66,22 @@ export default function AtatisticsPage() {
     setDate(dates);
     const start = dates[0]?.format("YYYYMMDDHH");
     const end = dates[1]?.format("YYYYMMDDHH");
-    let interval = 24;
+    let interval_ = 24;
     if (dates[1].unix() - dates[0].unix() <= 3 * 24 * 60 * 60) {
-      interval = 1;
+      interval_ = 1;
     }
-    console.log("{start,end,interval} :>> ", { start, end, interval });
+    console.log("{start,end,interval} :>> ", {
+      start,
+      end,
+      interval: interval_,
+    });
     const res = await playerLogDuccessTotal({
       start,
       end,
-      interval,
+      interval: interval_,
     });
     setData(res.data || []);
+    setInterval(interval_);
   }
   const charts = blocks.map((v) => {
     return (
@@ -83,22 +89,25 @@ export default function AtatisticsPage() {
         data={data}
         title={v.title}
         keyStr={v.keyStr}
+        interval={interval}
         key={v.keyStr}
       />
     );
   });
   return (
     <div className={style.atatisticsPage + " flex-layout fcol"}>
-      <h2 className="flex-none">统计数据</h2>
-      <div className="flex-auto">
+      <div className={style.head}>
+        <h2 className={"flex-none "}>统计数据</h2>
+
         <div className="form">
           <DatePicker.RangePicker
-            onChange={refresh}
+            showTime
             defaultValue={date}
+            onChange={refresh}
           ></DatePicker.RangePicker>
         </div>
-        {charts}
       </div>
+      <div className="flex-auto">{charts}</div>
     </div>
   );
 }

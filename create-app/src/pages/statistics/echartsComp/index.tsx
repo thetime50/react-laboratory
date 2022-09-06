@@ -23,7 +23,7 @@ interface EchargsProps {
 const EchartsComp = forwardRef<EchargsRef, EchargsProps>((props, ref) => {
   const chartEl = useRef(null);
   const { onInit } = props;
-  let echartsIts = useRef<null | echarts.ECharts>(null);
+  const echartsIts = useRef<null | echarts.ECharts>(null);
   useEffect(() => {
     if (chartEl.current) {
       echartsIts.current = echarts.init(chartEl.current);
@@ -44,6 +44,6 @@ const EchartsComp = forwardRef<EchargsRef, EchargsProps>((props, ref) => {
       setOption,
     };
   });
-  return <div className={style["echarts-comp"]} ref={chartEl}></div>;
+  return <div className={style.EchartsComp} ref={chartEl}></div>;
 });
 export default EchartsComp;
