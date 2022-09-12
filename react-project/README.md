@@ -39,6 +39,8 @@ Require statement not part of import statement.eslint@typescript-eslint/no-var-r
 - [sideEffects导致的全局样式消失](https://blog.csdn.net/o__o__o__o/article/details/117606495)  
   "sideEffects": \["*.css","*.scss"\],
 
+- [css-loader](https://webpack.docschina.org/loaders/css-loader/#modules)带有css module，默认开启
+
 ## 功能点整理
 
 - .npmrc npm下载源配置
