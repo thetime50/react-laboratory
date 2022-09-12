@@ -12,7 +12,7 @@ function ComputedOne(props: IProperties) {
   const { a, b } = props;
   const sum = add(a, b);
 
-  return <p className={`computed-one ${style['computed-one-aa']}`}>{`Hi, I'm computed one, my sum is ${sum}.`}</p>;
+  return <p className={`component-one ${style['component-one-aa']}`}>{`Hi, I'm computed one, my sum is ${sum}.`}</p>;
 }
 
 export default ComputedOne;

@@ -18,7 +18,7 @@ function ComputedOne(props: IProperties) {
     setSum(add(a, b));
   }());
 
-  return <p className="computed-two">{`Hi, I'm computed one, my sum is ${sum}.`}</p>;
+  return <p className="component-two">{`Hi, I'm computed one, my sum is ${sum}.`}</p>;
 }
 
 export default ComputedOne;
