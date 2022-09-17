@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import reactIconImg from 'Assets/images/react-icon.svg';
 import style from './app.m.scss';
+import HelloStyleJsx from './components/HelloStyleJsx';
 
 const CompOne = React.lazy(() => import('Components/CompOne'));
 const CompTwo = React.lazy(() => import('Components/CompTwo'));
@@ -34,6 +35,7 @@ function App(props: IPprops) {
         <img src={reactIconImg} alt="" />
         {/* <img src="./assets/images/react-icon.svg" alt="" /> */}
       </div>
+      <HelloStyleJsx />
     </>
   );
 }

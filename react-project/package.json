@@ -71,7 +71,6 @@
     "sass": "^1.54.4",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
-    "styled-jsx-plugin-sass": "^1.0.0",
     "stylelint": "^14.10.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^27.0.0",
@@ -99,6 +98,7 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-jsx": "^5.0.7"
+    "styled-jsx": "^5.0.7",
+    "styled-jsx-plugin-sass": "^1.0.0"
   }
 }

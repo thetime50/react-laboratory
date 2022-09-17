@@ -20,7 +20,9 @@ const getCssLoaders = (importLoaders) => [
     options: {
       // modules: false,
       modules: {
-        localIdentName: '[hash:base64]', // default
+        // localIdentName: '[hash:base64]', // default
+        // localIdentName: '[path][name]__[local]--[hash:base64:5]',
+        localIdentName: '[local]--[hash:base64:5]',
         // auto: true, // default
         auto: (filename) => /\.module\.\w+$/i.test(filename) || /\.icss\.\w+$/i.test(filename) || /\.m\.\w+$/i.test(filename),
       },

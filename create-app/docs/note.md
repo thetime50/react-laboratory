@@ -363,4 +363,7 @@ styleinject 注入 js class 样式
 - [styled-jsx](https://github.com/vercel/styled-jsx) 单文件嵌入 css 有 scoped 效果 可以处理 scss 吗
   - [styled-jsx-plugin-sass](https://github.com/giuseppeg/styled-jsx-plugin-sass)
   - [craco-styled-jsx 目前还不支持 react18](https://github.com/cr4zyc4t/craco-styled-jsx)
+  - [tsx &lt;style jsx&gt; jsx 报错问题](http://www.manongjc.com/detail/28-osisxkgpfuzaify.html)  
+    index.d.ts 要放在根目录的 types 目录里
+    - [ ] 编辑器没有语法提示和高亮,lint 也没有 lint 到
 - [tailwindcss](https://tailwindcss.com/) 样式缩写库
