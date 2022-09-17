@@ -359,7 +359,7 @@ styleinject 注入 js class 样式
 - [React 拾遗：从 10 种现在流行的 CSS 解决方案谈谈我的最爱 （中） 2018](https://juejin.cn/post/6844903633662771207)
 - [React 拾遗：从 10 种现在流行的 CSS 解决方案谈谈我的最爱 （下） 2018](https://juejin.cn/post/6844903638289252360)
 
-- babel-plugin-react-css-modules 使用 styleName 替代了 className={style.className} 可以是动态，静态和动态的会分开渲染
+- babel-plugin-react-css-modules 使用 styleName='className' 替代了 className={style.className} 可以是动态，静态和动态的会分开渲染
 - [styled-jsx](https://github.com/vercel/styled-jsx) 单文件嵌入 css 有 scoped 效果 可以处理 scss 吗
   - [styled-jsx-plugin-sass](https://github.com/giuseppeg/styled-jsx-plugin-sass)
   - [craco-styled-jsx 目前还不支持 react18](https://github.com/cr4zyc4t/craco-styled-jsx)
@@ -367,3 +367,9 @@ styleinject 注入 js class 样式
     index.d.ts 要放在根目录的 types 目录里
     - [ ] 编辑器没有语法提示和高亮,lint 也没有 lint 到
 - [tailwindcss](https://tailwindcss.com/) 样式缩写库
+- -
+- [react-scoped-css](https://github.com/gaoxiaoliangz/react-scoped-css)
+
+style-jsx 会增加 jsx-xxx 类选择器  
+style-module 则是给每个类名添加哈希 \[local\]--\[hash:base64:5\] 让每个类名唯一
+scoped-css 是加一个 data-v-\[hash\] 选择器

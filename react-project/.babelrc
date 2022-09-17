@@ -23,6 +23,12 @@
         ],[
             "styled-jsx/babel",
             { "plugins": ["styled-jsx-plugin-sass"] }
+        ],
+        [
+            "babel-plugin-react-scoped-css",
+            {
+                "include": ".(s|scoped).(sa|sc|c)ss$"
+            }
         ]
     ]
 }
