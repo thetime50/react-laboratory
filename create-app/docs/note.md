@@ -359,7 +359,7 @@ styleinject 注入 js class 样式
 - [React 拾遗：从 10 种现在流行的 CSS 解决方案谈谈我的最爱 （中） 2018](https://juejin.cn/post/6844903633662771207)
 - [React 拾遗：从 10 种现在流行的 CSS 解决方案谈谈我的最爱 （下） 2018](https://juejin.cn/post/6844903638289252360)
 
-- babel-plugin-react-css-modules 使用 styleName='className' 替代了 className={style.className} 可以是动态，静态和动态的会分开渲染
+- [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules) 使用 styleName='className' 替代了 className={style.className} 可以是动态，静态和动态的会分开渲染
 - [styled-jsx](https://github.com/vercel/styled-jsx) 单文件嵌入 css 有 scoped 效果 可以处理 scss 吗
   - [styled-jsx-plugin-sass](https://github.com/giuseppeg/styled-jsx-plugin-sass)
   - [craco-styled-jsx 目前还不支持 react18](https://github.com/cr4zyc4t/craco-styled-jsx)
