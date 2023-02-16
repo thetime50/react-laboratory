@@ -12,6 +12,8 @@
 https://redux.js.org/introduction/getting-started
 应用程序的可预测状态容器
 
+[廖雪峰 Redux 入门教程（一）：基本用法](https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+
 npm install react-redux @reduxjs/toolkit -S
 @reduxjs/toolkit 包括了 redux-core
 
