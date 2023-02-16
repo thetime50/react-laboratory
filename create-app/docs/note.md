@@ -49,6 +49,8 @@ IE 9-11 需要 polyfill [react-app-polyfill](https://github.com/facebook/create-
 
 编辑 package.json 文件可能不会被 babel-loader 识别到触发刷新，可以尝试删除 node_modules/.cache 文件夹重试
 
+[browserslist 查看不同浏览器不同平台占比](https://browsersl.ist/#q=%3E+0.2%25%2C+not+dead%2C+not+op_mini+all)
+
 #### 更新版本
 
 create-react-app 包含
@@ -63,6 +65,25 @@ create-react-app 包含
 #### 编辑器配置
 
 **浏览器联调配置**
+vscode
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    }
+  ]
+}
+```
 
 **格式化配置**  
 使用 husky lint-staged prettier 在提交前执行 prettier 格式检查
@@ -70,6 +91,12 @@ create-react-app 包含
 默认配置在 package.json 的 eslintConfig 中
 
 建议使用 prettier 格式化
+
+- husky git hoot 重发调用  
+  package.json 里的 husky 字段配置
+- lint-staged 让 git hoot 能够调用暂存文件的代码  
+  package.json 里的 lint-staged 字段配置
+- prettier 格式检查
 
 #### 独立的组件开发
 
@@ -184,7 +211,7 @@ SASS_PATH=path1;path2;path3
 
 #### 后处理
 
-压缩 添加前缀
+压缩 添加不同浏览器前缀
 
 通过 browserslist 配置
 

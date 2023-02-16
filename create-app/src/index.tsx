@@ -26,6 +26,7 @@ import UseParams from "pages/useParams";
 import X6resize from "pages/x6resize";
 import ImmerPage from "pages/immer";
 import Statistics from "pages/statistics";
+import ReduxView from "pages/reduxView";
 
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
@@ -71,6 +72,9 @@ root.render(
           <li>
             <Link to="/statistics">statistics</Link>
           </li>
+          <li>
+            <Link to="/redux">redux</Link>
+          </li>
         </ul>
 
         {/* <hr /> */}
@@ -98,6 +102,7 @@ root.render(
             <Route path="/x6resize" element={<X6resize />} />
             <Route path="/immer" element={<ImmerPage />} />
             <Route path="/statistics" element={<Statistics />} />
+            <Route path="/redux" element={<ReduxView />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
