@@ -1,9 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
-
 import { mainStore } from "reduxStore";
+
+import ReduxChild1 from "./reduxChild1";
+import ReduxChild2 from "./reduxChild2";
+
 export default function reduxView() {
-  const mainState = mainStore.getState();
+  const mainState = mainStore.getState(); // 不会触发刷新
   console.log(
     "mainState.cnt, mainState.loading",
     mainState.cnt,
@@ -23,11 +26,10 @@ export default function reduxView() {
       <h1>redux</h1>
       <div>
         <button onClick={addCnt}> cnt add </button>
-        <button onClick={() => switchLoading()}></button>
+        <button onClick={() => switchLoading()}>switch loading</button>
       </div>
-      <Provider store={mainStore}>
-        <></>
-      </Provider>
+      <ReduxChild1 />
+      <Provider store={mainStore}>{/* <ReduxChild2 /> */}</Provider>
     </div>
   );
 }

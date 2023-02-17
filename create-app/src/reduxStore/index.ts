@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import type { Action } from "redux";
 
-interface MainStateInterface {
+export interface MainStateInterface {
   cnt: number;
   loading: boolean;
 }
