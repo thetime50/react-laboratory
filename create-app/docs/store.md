@@ -20,8 +20,10 @@ npm install react-redux @reduxjs/toolkit -S
 <s>
 npm install --save-dev @redux-devtools/core # devtool 工具
 npm install -D redux-devtools-extension # devtool 工具 类型定义
-[redux0toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+[redux toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 [redux-devtools](https://github.com/reduxjs/redux-devtools)
+
+[Day 14-和 Redux 合作重寫 todos 吧](https://ithelp.ithome.com.tw/articles/10203447)
 
 ```ts
 + /* eslint-disable no-underscore-dangle */
