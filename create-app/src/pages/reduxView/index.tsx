@@ -32,6 +32,10 @@ export default function reduxView() {
         <button onClick={() => switchLoading()}>switch loading</button>
       </div>
       <ReduxChild1 />
+
+      <Provider store={mainStore}>
+        <ReduxChild2 str="hello" />
+      </Provider>
       <h1>react redux</h1>
       <Provider store={reactStore}>
         <ReduxChild3 />

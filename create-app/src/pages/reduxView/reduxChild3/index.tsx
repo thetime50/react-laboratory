@@ -21,7 +21,7 @@ const reduxChild3: FC<ReduxChild2PropInterface> = function (props) {
   const { childCnt, childLoading, cntSub, loadingSwitch } = props;
   return (
     <div>
-      <h2>reduxChild2</h2>
+      <h2>reduxChild3</h2>
       <div>childCnt {childCnt}</div>
       <div>childLoading {String(childLoading)}</div>
       <div>
