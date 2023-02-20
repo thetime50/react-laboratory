@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 
-import { MainStateInterface } from "reduxStore";
+import { MainStateInterface, mainStore } from "reduxStore";
 
 interface ReduxChild2PropInterface {
   childCnt: number;
@@ -41,20 +41,22 @@ const mapDispatchToProps = (
   subCnt() {
     console.log("ownProps", ownProps); // 父组件传入的prop
     console.log("args :>> ", args);
+    const state = mainStore.getState();
     let action = {
       type: "cnt/update",
-      data: 1,
+      data: state.cnt - 1,
     };
     dispatch(action); //主要是用于发送一个action
   },
   // // https://blog.huati365.com/c8c951d74774581a
-  switchLoading: bindActionCreators(
-    () => ({
+  switchLoading: bindActionCreators(() => {
+    const state = mainStore.getState();
+
+    return {
       type: "loading/update",
-      data: true,
-    }),
-    dispatch
-  ),
+      data: !state.loading,
+    };
+  }, dispatch),
   // https://juejin.cn/post/6844903505191239694
   // increment: (...args) => dispatch(actions.increment(...args)),
   // decrement: (...args) => dispatch(actions.decrement(...args))
