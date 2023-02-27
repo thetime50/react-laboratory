@@ -14,6 +14,10 @@ const UeduxChild4: FC = function (props) {
   return (
     <div>
       <h2>reduxChild4</h2>
+      <div>
+        使用react -&gt; creactStore 构建， Provider构建， react-redux -&gt;
+        useSelector useDispatch获取 修改
+      </div>
       <div>childCnt {cntSel}</div>
       <div>childLoading {String(loadingSel)}</div>
       <div>

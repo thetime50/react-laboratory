@@ -22,6 +22,11 @@ const reduxChild3: FC<ReduxChild2PropInterface> = function (props) {
   return (
     <div>
       <h2>reduxChild3</h2>
+      <div>
+        使用redux -&gt; createStore 构造，Provider/connect 注入、转发，
+        <br />
+        触发数据修改 mapDispatchToProps 使用 对象-函数返回值的形式
+      </div>
       <div>childCnt {childCnt}</div>
       <div>childLoading {String(childLoading)}</div>
       <div>

@@ -7,6 +7,7 @@ export default function reduxChild1() {
     <div>
       <h2>reduxChild1</h2>
       <p>
+        使用redux-&gt; createStore 构建，直接使用store.getState()获取 <br />
         没有触发刷新 需要react-redux 的 Provider 和 connect 或者useSelect 来绑定
       </p>
       <div>mainState.cnt {mainState.cnt}</div>

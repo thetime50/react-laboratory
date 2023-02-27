@@ -38,6 +38,35 @@ npm install -D redux-devtools-extension # devtool 工具 类型定义
 
 #### reduxjs 做了啥 有啥接口
 
+```ts
+createStore(combineReducers({
+  cntReducer: function (state = 0, action: DataAction) {
+    switch (action.type) {
+      case CntActionType.UPDATE:
+        return action.data;
+      case CntActionType.ADD:
+        return state + 1;
+      case CntActionType.SUB:
+        return state - 1;
+      default:
+        return state;
+    }
+  },
+  loadingReducer: function (state = false, action: DataAction) {
+    switch (action.type) {
+      case LoadingActionType.UPDATE:
+        return Boolean(action.data);
+      case LoadingActionType.SWITCH:
+        return !state;
+      default:
+        return state;
+    }
+  };
+}))
+```
+
+combineReducers: 把拆分成多个函数写的 redux 合并为一个 redux 函数
+
 #### @reduxjs/toolkit 做了啥 有啥接口
 
 包装了 readux 方法
@@ -58,7 +87,7 @@ npm install -D redux-devtools-extension # devtool 工具 类型定义
 
 #### react-redux 做了啥 有啥接口
 
-可以使用&lt;Provider store={store}&gt; 标签
+可以使用&lt;Provider store={store}&gt; 标签 配合 connect()
 
 - useSelector 是 store state 订阅器
 - useDispatch 是 action 包装器？

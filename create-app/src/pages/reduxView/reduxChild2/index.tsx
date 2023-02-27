@@ -15,6 +15,13 @@ const reduxChild2: FC<ReduxChild2PropInterface> = function (props) {
   return (
     <div>
       <h2>reduxChild2</h2>
+      <div>
+        使用redux -&gt; createStore构建，Provider/connect注入、转发、触发
+        <br />
+        修改值时 需要在 connect的 mapDispatchToProps 里重新store.getState()
+        <br />
+        mapDispatchToProps使用函数-dispatch的形式
+      </div>
       <div>childCnt {childCnt}</div>
       <div>childLoading {childLoading.toString()}</div>
       <div>
