@@ -35,7 +35,7 @@ const loadingReducer = function (state = false, action: DataAction) {
   }
 };
 
-// 把拆分多个函数的reduser 合并为一个reduser函数
+// 把拆分多个函数的reduscr 合并为一个reduscr函数
 const reactStore = combineReducers({
   name: nameReducer,
   cnt: cntReducer,
