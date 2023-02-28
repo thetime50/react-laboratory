@@ -71,7 +71,7 @@ state 是只读的，使用 action 来更新数据解决 race codition 问题。
 
 先前的技术 Flux Elm Immutable Backbone cursor reselect Baobab Rx  
 [awesome-redux](https://github.com/xgrommx/awesome-redux)
-redux-thunk redux-promise redux-router react-redux-form redux-undo
+redux-thunk redux-promise redux-actions redux-router react-redux-form redux-undo
 
 redux 里面不同模块的数据使用 id 互相引用
 
@@ -82,6 +82,100 @@ redux 里面不同模块的数据使用 id 互相引用
 - 修改传入参数；
 - 执行有副作用的操作，如 API 请求和路由跳转；
 - 调用非纯函数，如 Date.now() 或 Math.random()。
+
+简单来说让功能单一只保存数据
+
+要更新 state 里的对象/数组深处的属性一定要记得不能修改原本的 state,父级要 clone 出副本，或者使用<s>React-addons-update</s>，updeep，update 是遗留插件。改用 immutability-helper,或者使用原生支持深度更新的库 Immutable
+
+```js
+// React-addons-update
+import update from "react-addons-update";
+
+const newData = update(myDate, {
+  // 目标
+  x: { y: { z: { $set: 7 } } }, // 前缀的键$称为命令
+  a: { b: { $push: [9] } },
+});
+```
+
+- {$push: array} push()array 目标中的所有项目。
+- {$unshift: array} unshift()array 目标中的所有项目。
+- {$splice: array of arrays}使用项目提供的参数 arrays 调用目标上的每个项目。splice()
+- {$set: any}完全替换目标。
+- {$merge: object}将 的键 object 与目标合并。
+- {$apply: function}<u>将当前值传递给函数并使用新的返回值更新它。</u>
+
+拆分 Reducer  
+拆分的同时 subReducer 传入的 state 也是单独取出的  
+createStore 的 reducer 参数可以是返回 state 的参数，也可以是返回 subReducer 函数对象的参数  
+使用 combineReducers 做拆分
+
+```js
+function todoApp(state = initialState, action) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return Object.assign({}, state, {
+        visibilityFilter: visibilityFilter(state.todos, action),
+      });
+    case ADD_TODO:
+      return Object.assign({}, state, {
+        todos: todos(state.todos, action),
+      });
+    case TOGGLE_TODO:
+      return Object.assign({}, state, {
+        todos: todos(state.todos, action),
+      });
+    default:
+      return state;
+  }
+}
+function todoApp(state = {}, action) {
+  return {
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+    todos: todos(state.todos, action),
+  };
+}
+const todoApp = combineReducers({
+  visibilityFilter,
+  todos,
+});
+```
+
+#### Store
+
+createStore
+
+```js
+store = createStore(reducer);
+unsubscribe = store.subscribe(() => console.log(store.getState()));
+```
+
+#### 数据流
+
+生命周期
+
+1. 应用调用 store.dispatch(action)通知 store 执行动作
+2. redux 调用 rootReducer 分发到 subReducer
+3. rootReducer 合并数据得到新的 state 树
+4. store 保存新的 state 树 并触发 store.subscribe()
+
+#### 配合 react
+
+容器组件（Smart/Container Components）和展示组件（Dumb/Presentational Components）
+
+- 容器组件 处理数据 逻辑 和 更新
+- 展示组件 数据渲染和样式
+
+使用 connect 生成容器组件，并有一些性能优化的动作
+
+reatc 可以给组件函数设置 propTypes 属性配置 prop，配合 rpop-type 库
+connect 的 mapStateToProps 可以对 state 里的数据做一些处理和转换（可以不是单纯的数据传递），例如获取 state 里的 todolist 和 filter 并实现过滤
+
+使用 Provider 绑定 store
+
+#### 异步 action
+
+## 总结
 
 #### reduxjs 做了啥 有啥接口
 
