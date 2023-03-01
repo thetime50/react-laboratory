@@ -175,6 +175,8 @@ connect 的 mapStateToProps 可以对 state 里的数据做一些处理和转换
 
 #### 异步 action
 
+真是场景 https://www.redux.org.cn/docs/introduction/Examples.html#real-world
+
 ## 总结
 
 #### reduxjs 做了啥 有啥接口
