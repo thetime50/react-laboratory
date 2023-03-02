@@ -10,6 +10,7 @@ interface ReduxChild2PropInterface {
   subCnt: () => void;
   switchLoading: () => void;
 }
+
 const reduxChild2: FC<ReduxChild2PropInterface> = function (props) {
   const { childCnt, childLoading, subCnt, switchLoading } = props;
   return (
