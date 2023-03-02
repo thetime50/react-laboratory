@@ -3,6 +3,7 @@ import "babel-polyfill";
 import fetch from "cross-fetch";
 import { ThunkDispatch } from "redux-thunk";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { StoreState } from "./type";
 
 export const SELECT_SUBREDDIT = "SELECT_SUBREDDIT";
 
@@ -70,7 +71,7 @@ export function fetchPosts(subreddit: string) {
 //   }
 // );
 
-function shouldFetchPosts(state: any, subreddit: string) {
+function shouldFetchPosts(state: StoreState, subreddit: string) {
   const posts = state.postsBySubreddit[subreddit];
   if (!posts) {
     return true;
@@ -84,7 +85,7 @@ function shouldFetchPosts(state: any, subreddit: string) {
 export function fetchPostsIfNeeded(subreddit: string) {
   return (
     dispatch: ThunkDispatch<{}, undefined, AnyAction>,
-    getState: () => any
+    getState: () => StoreState
   ) => {
     if (shouldFetchPosts(getState(), subreddit)) {
       return dispatch(fetchPosts(subreddit));
@@ -92,4 +93,25 @@ export function fetchPostsIfNeeded(subreddit: string) {
       return Promise.resolve();
     }
   };
+}
+
+export function fetchSignal(
+  dispatch: ThunkDispatch<{}, undefined, AnyAction>, // 这个dispatch 是dispatch(fetchSignal)里面调用fetchSignal(dispatch) 传入的
+  getState: () => StoreState
+) {
+  console.log("fetchSignal()");
+  // const subreddit = "reactjs";
+  const subreddit = "vue";
+  dispatch(selectSubreddit(subreddit));
+  dispatch(requestPosts(subreddit));
+  // return fetch(`http://www.subreddit.com/r/${subreddit}.json`)
+  return fetch(`/srapi/r/${subreddit}.json`)
+    .then(
+      (response) => response.json(),
+      (error) => console.log("An error occurred", error)
+    )
+    .then((json) => {
+      console.log("fetchSignal()", json);
+      return dispatch(receivePosts(subreddit, json));
+    });
 }

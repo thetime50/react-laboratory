@@ -10,7 +10,7 @@ import {
   fetchPostsIfNeeded,
   invalidateSubreddit,
 } from "actionReduxStore/actions";
-import { StoreState } from "actionReduxStore";
+import { StoreState } from "actionReduxStore/type";
 import Picker from "./components/Picker";
 import Posts from "./components/Posts";
 
@@ -35,6 +35,7 @@ class AsyncApp extends Component<AsyncAppProp> {
   // };
   constructor(props: AsyncAppProp) {
     super(props);
+    console.log("props :>> ", props);
     this.handleChange = this.handleChange.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
   }
@@ -124,7 +125,7 @@ function mapStateToProps(state: StoreState) {
   };
 }
 
-const AsyncAppConnect = connect(mapStateToProps)(AsyncApp);
+const AsyncAppConnect = connect(mapStateToProps)(AsyncApp); // connect 没有mapDispatchToProps参数时 会强制往props里面注入一个dispatch方法
 export const AsyncAppContainer: FC = function (props = {}) {
   return (
     <Provider store={reduxActionStore}>

@@ -3,19 +3,8 @@ import thunkMiddleware from "redux-thunk"; // 已集成在Redux toolkit中
 import { configureStore } from "@reduxjs/toolkit";
 
 import { createLogger } from "redux-logger";
-import { selectSubreddit, fetchPosts } from "./actions";
+import { selectSubreddit, fetchPosts, fetchSignal } from "./actions";
 import rootReducer from "./reducers";
-
-interface PostInterface {
-  isFetching: boolean;
-  didInvalidate: boolean;
-  items: any[]; // {title}
-  lastUpdated: number;
-}
-export interface StoreState {
-  postsBySubreddit: Record<string, PostInterface>;
-  selectedSubreddit: string;
-}
 
 const loggerMiddleware = createLogger();
 
@@ -34,3 +23,6 @@ store.dispatch(selectSubreddit("reactjs"));
 //   .dispatch(fetchPosts("reactjs"))
 //   .then(() => console.log(store.getState()))
 //   .catch((e) => e);
+
+store.dispatch(fetchSignal);
+// store.dispatch((d1) => d1((d2) => d2(fetchSignal))); // 嵌套的dispatch回调传入

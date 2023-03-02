@@ -8,7 +8,7 @@ export default class Picker extends Component<{
 }> {
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   // https://reactjs.org/docs/context.html#classcontexttype
-  static contextTypes = {
+  static propTypes = {
     options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
