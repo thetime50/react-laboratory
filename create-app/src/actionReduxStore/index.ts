@@ -10,7 +10,7 @@ interface PostInterface {
   isFetching: boolean;
   didInvalidate: boolean;
   items: any[]; // {title}
-  lastUpdated: string;
+  lastUpdated: number;
 }
 export interface StoreState {
   postsBySubreddit: Record<string, PostInterface>;
@@ -23,14 +23,14 @@ const loggerMiddleware = createLogger();
 //   rootReducer,
 //   applyMiddleware(thunkMiddleware, loggerMiddleware)
 // );
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(thunkMiddleware, loggerMiddleware),
 });
 
 store.dispatch(selectSubreddit("reactjs"));
-store
-  .dispatch(fetchPosts("reactjs"))
-  .then(() => console.log(store.getState()))
-  .catch((e) => e);
+// store
+//   .dispatch(fetchPosts("reactjs"))
+//   .then(() => console.log(store.getState()))
+//   .catch((e) => e);

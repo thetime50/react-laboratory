@@ -67,3 +67,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - [ ] 组件文档
   - [ ] Storybook
   - [ ] Styleguidist
+- [x] http-proxy-middleware 接口代理

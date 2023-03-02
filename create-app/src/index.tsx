@@ -107,7 +107,7 @@ root.render(
             <Route path="/immer" element={<ImmerPage />} />
             <Route path="/statistics" element={<Statistics />} />
             <Route path="/redux" element={<ReduxView />} />
-            <Route path="/todoList" element={<ReduxView />} />
+            <Route path="/todoList" element={<TodoList />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>

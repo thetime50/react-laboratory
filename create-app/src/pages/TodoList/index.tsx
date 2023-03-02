@@ -1,10 +1,10 @@
 // https://www.redux.org.cn/docs/advanced/ExampleRedditAPI.html
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component, FC } from "react";
+import PropTypes, { InferProps } from "prop-types";
 import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import { connect, Provider } from "react-redux";
 import {
   selectSubreddit,
   fetchPostsIfNeeded,
@@ -14,27 +14,26 @@ import { StoreState } from "actionReduxStore";
 import Picker from "./components/Picker";
 import Posts from "./components/Posts";
 
-class AsyncApp extends Component<{
+import { store as reduxActionStore } from "actionReduxStore";
+
+interface AsyncAppProp {
   selectedSubreddit: string;
   posts: any[];
   isFetching: boolean;
   lastUpdated: number;
-  dispatch: (action: ThunkAction<any, any, any, AnyAction>) => void;
-}> {
-  static contextType = {
-    selectedSubreddit: PropTypes.string.isRequired,
-    posts: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
-    dispatch: PropTypes.func.isRequired,
-  };
-  constructor(props: {
-    selectedSubreddit: string;
-    posts: any[];
-    isFetching: boolean;
-    lastUpdated: number;
-    dispatch: () => void;
-  }) {
+  dispatch: ThunkDispatch<any, any, AnyAction>;
+}
+
+class AsyncApp extends Component<AsyncAppProp> {
+  // static contextType = {
+  // static propTypes = {
+  //   selectedSubreddit: PropTypes.string.isRequired,
+  //   posts: PropTypes.array.isRequired,
+  //   isFetching: PropTypes.bool.isRequired,
+  //   lastUpdated: PropTypes.number,
+  //   dispatch: PropTypes.func.isRequired,
+  // };
+  constructor(props: AsyncAppProp) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
@@ -45,14 +44,14 @@ class AsyncApp extends Component<{
     dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: AsyncAppProp) {
     if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
       const { dispatch, selectedSubreddit } = nextProps;
       dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
   }
 
-  handleChange(nextSubreddit) {
+  handleChange(nextSubreddit: string) {
     this.props.dispatch(selectSubreddit(nextSubreddit));
   }
 
@@ -96,7 +95,8 @@ class AsyncApp extends Component<{
     );
   }
 }
-
+// console.log("AsyncApp.propTypes", AsyncApp.propTypes);
+// InferProps<typeof AsyncApp.propTypes>
 // AsyncApp.propTypes = {
 //   selectedSubreddit: PropTypes.string.isRequired,
 //   posts: PropTypes.array.isRequired,
@@ -124,4 +124,13 @@ function mapStateToProps(state: StoreState) {
   };
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+const AsyncAppConnect = connect(mapStateToProps)(AsyncApp);
+export const AsyncAppContainer: FC = function (props = {}) {
+  return (
+    <Provider store={reduxActionStore}>
+      <AsyncAppConnect />
+    </Provider>
+  );
+};
+
+export default AsyncAppContainer;

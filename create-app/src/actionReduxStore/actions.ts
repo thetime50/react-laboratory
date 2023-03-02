@@ -37,7 +37,7 @@ export function receivePosts(subreddit: any, json: any) {
   return {
     type: RECEIVE_POSTS,
     subreddit,
-    posts: json.data.childern.map((child: any) => child.data),
+    posts: json.data.children.map((child: any) => child.data),
     receivedAt: Date.now(),
   };
 }
@@ -46,7 +46,8 @@ export function fetchPosts(subreddit: string) {
   return function (dispatch: ThunkDispatch<{}, undefined, AnyAction>) {
     //: ThunkDispatch<{}, {}, AnyAction>
     dispatch(requestPosts(subreddit));
-    return fetch(`http://www.subreddit.com/r/${subreddit}.json`)
+    // return fetch(`http://www.subreddit.com/r/${subreddit}.json`)
+    return fetch(`/srapi/r/${subreddit}.json`)
       .then(
         (response) => response.json(),
         (error) => console.log("An error occurred", error)
@@ -70,7 +71,7 @@ export function fetchPosts(subreddit: string) {
 // );
 
 function shouldFetchPosts(state: any, subreddit: string) {
-  const posts = state.postsBySubreddit(subreddit);
+  const posts = state.postsBySubreddit[subreddit];
   if (!posts) {
     return true;
   } else if (posts.isFetching) {
